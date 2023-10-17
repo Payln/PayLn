@@ -1,0 +1,147 @@
+<script>
+	const formFields = [
+		{
+			label: 'Email address',
+			type: 'email',
+			name: 'floating_email',
+			id: 'floating_email',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Password',
+			type: 'password',
+			name: 'floating_password',
+			id: 'floating_password',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Confirm password',
+			type: 'password',
+			name: 'repeat_password',
+			id: 'floating_repeat_password',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Your Country',
+			type: 'text',
+			name: 'country',
+			id: 'floating_country',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Your City',
+			type: 'text',
+			name: 'City',
+			id: 'floating_City',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Your State',
+			type: 'text',
+			name: 'State',
+			id: 'floating_State',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Your Postal Code',
+			type: 'text',
+			name: 'Postal_Code',
+			id: 'floating_Postal_Code',
+			placeholder: '',
+			required: true
+		}
+	];
+</script>
+
+<section class="pt-10">
+	<div
+		class="w-full p-4 mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8"
+	>
+		<h3 class="md:text-3xl text-xl capitalize font-medium text-gray-900">Sign up for PaLyn</h3>
+		<form>
+			{#each formFields as field}
+				<div class="relative z-0 w-full mb-6 group">
+					<input
+						type={field.type}
+						name={field.name}
+						id={field.id}
+						class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+						placeholder={field.placeholder}
+						required={field.required}
+					/>
+					<label
+						for={field.id}
+						class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+					>
+						{field.label}
+					</label>
+				</div>
+			{/each}
+			<div class="grid md:grid-cols-2 md:gap-6">
+				<div class="relative z-0 w-full mb-6 group">
+					<input
+						type="text"
+						name="floating_first_name"
+						id="floating_first_name"
+						class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+						placeholder=" "
+						required
+					/>
+					<label
+						for="floating_first_name"
+						class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+						>First name</label
+					>
+				</div>
+				<div class="relative z-0 w-full mb-6 group">
+					<input
+						type="text"
+						name="floating_last_name"
+						id="floating_last_name"
+						class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+						placeholder=" "
+						required
+					/>
+					<label
+						for="floating_last_name"
+						class="peer-focus:font-medium absolute text-sm text-gray-500 0 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+						>Last name</label
+					>
+				</div>
+			</div>
+			<div class="relative z-0 w-full mb-6 group">
+				<input
+					type="text"
+					name="floating_company"
+					id="floating_company"
+					class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+					placeholder=" "
+				/>
+				<label
+					for="floating_company"
+					class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+					>Company Name(E.g Google)</label
+				>
+			</div>
+			<div class="flex flex-row justify-between">
+				<button
+					type="submit"
+					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+					>Submit</button
+				>
+				<button
+					type="button"
+					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+				>
+					<a href="/">Login</a>
+				</button>
+			</div>
+		</form>
+	</div>
+</section>
