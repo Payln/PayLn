@@ -1,4 +1,24 @@
 <script>
+	let pass_Type = 'password';
+
+	const pass_Visibility = () => {
+		if (pass_Type == 'password') {
+			pass_Type = 'text';
+		} else {
+			pass_Type = 'password';
+		}
+	};
+
+	/**
+	 * @param {{ key: string; }} event
+	 */
+
+	function KeyDown(event) {
+		if (event.key === 'Enter') {
+			pass_Visibility();
+		}
+	}
+
 	const formFields = [
 		{
 			label: 'Email address',
@@ -55,6 +75,22 @@
 			id: 'floating_Postal_Code',
 			placeholder: '',
 			required: true
+		},
+		{
+			label: 'Address',
+			type: 'text',
+			name: 'Address',
+			id: 'floating_Address',
+			placeholder: '',
+			required: true
+		},
+		{
+			label: 'Website URL',
+			type: 'text',
+			name: 'Website_URL',
+			id: 'floating_Website_URL',
+			placeholder: '',
+			required: true
 		}
 	];
 </script>
@@ -67,14 +103,39 @@
 		<form>
 			{#each formFields as field}
 				<div class="relative z-0 w-full mb-6 group">
-					<input
-						type={field.type}
-						name={field.name}
-						id={field.id}
-						class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-						placeholder={field.placeholder}
-						required={field.required}
-					/>
+					{#if field.label === 'Password' || field.label === 'Confirm password'}
+						<input
+							type={pass_Type}
+							name={field.name}
+							id={field.id}
+							class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+							placeholder={field.placeholder}
+							required={field.required}
+						/>
+						<!-- Password Visibility Icon -->
+						<span class="absolute bottom-3 right-0 flex items-center px-2 cursor-pointer">
+							<i
+								on:click={pass_Visibility}
+								on:keydown={KeyDown}
+								class:fa-eye-slash={pass_Type == 'text'}
+								class:fa-eye={pass_Type !== 'text'}
+								class="fas"
+								aria-label={pass_Type == 'text' ? 'Hide password' : 'Show password'}
+								role="button"
+								tabindex="0"
+							/>
+						</span>
+						<!-- End Password Visibility Icon -->
+					{:else}
+						<input
+							type={pass_Type}
+							name={field.name}
+							id={field.id}
+							class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+							placeholder={field.placeholder}
+							required={field.required}
+						/>
+					{/if}
 					<label
 						for={field.id}
 						class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
@@ -132,12 +193,12 @@
 			<div class="flex flex-row justify-between">
 				<button
 					type="submit"
-					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
 					>Submit</button
 				>
 				<button
 					type="button"
-					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+					class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
 				>
 					<a href="/">Login</a>
 				</button>

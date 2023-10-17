@@ -40,7 +40,7 @@
 					>Your password</label
 				>
 				<!-- Password Visibility Icon -->
-				<div class="absolute bottom-3 right-0 flex items-center px-2 cursor-pointer">
+				<span class="absolute bottom-3 right-0 flex items-center px-2 cursor-pointer">
 					<i
 						on:click={pass_Visibility}
 						on:keydown={KeyDown}
@@ -51,7 +51,7 @@
 						role="button"
 						tabindex="0"
 					/>
-				</div>
+				</span>
 
 				<!-- End Password Visibility Icon -->
 				<input
