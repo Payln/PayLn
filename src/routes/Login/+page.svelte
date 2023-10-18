@@ -21,12 +21,21 @@
 </script>
 
 <div class="p-2 sm:p-6 md:p-10">
-	<section class="flex flex-row justify-center">
+	<section class="flex flex-col sm:flex-row justify-center">
+		<!-- Top Logo -->
 		<div
-			class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
+			class="w-full h-[10vh] sm:hidden p-2 max-h-sm max-w-sm bg-[#223d5b] border border-gray-200 rounded-t-lg shadow flex justify-center"
+		>
+			<div class="w-[6rem] mt-[1rem]">
+				<PaylnSvg />
+			</div>
+		</div>
+		<!-- End of Top Logo  -->
+		<div
+			class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 		>
 			<form class="space-y-12" action="#">
-				<h5 class="md:text-3xl text-xl font-medium text-[#223d5b]">Login to PayLn</h5>
+				<h5 class="md:text-3xl text-xl font-medium text-[#223d5b] text-center">Login to PayLn</h5>
 				<div>
 					<label for="email" class="block mb-2 text-sm font-medium text-gray-900">Your email</label>
 					<input
@@ -71,7 +80,7 @@
 				</div>
 				<button
 					type="submit"
-					class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+					class="w-full text-white bg-[#223d5b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
 					>Login to your account</button
 				>
 				<div class="text-sm font-medium text-gray-900ha">
@@ -79,13 +88,12 @@
 				</div>
 			</form>
 		</div>
+
 		<!-- Other Side -->
 		<div
-			class="hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
+			class="relative hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 		>
-			<h1 class="text-[#DEDEDE] text-center text-[4rem]">Welcome</h1>
-			<h3 class=" text-[#DEDEDE] text-center text-[2rem]">to</h3>
-			<div class="mt-[5rem]">
+			<div class="pt-[20vh]">
 				<PaylnSvg />
 			</div>
 		</div>
