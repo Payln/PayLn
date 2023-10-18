@@ -83,10 +83,11 @@
 		<div
 			class="hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 		>
-			<h1 class=" text-[#DEDEDE] text-center text-[4rem]">Welcome</h1>
+			<h1 class="text-[#DEDEDE] text-center text-[4rem]">Welcome</h1>
 			<h3 class=" text-[#DEDEDE] text-center text-[2rem]">to</h3>
-			<span class="p-4" />
-			<PaylnSvg />
+			<div class="mt-[5rem]">
+				<PaylnSvg />
+			</div>
 		</div>
 	</section>
 </div>
