@@ -1,5 +1,5 @@
 <script>
-	import PaylnSvg from './PaylnSVG.svelte';
+	import PaylnSvg from '$lib/PaylnSVG.svelte';
 
 	let pass_Type = 'password';
 	const pass_Visibility = () => {
@@ -89,7 +89,7 @@
 			</form>
 		</div>
 
-		<!-- Other Side -->
+		<!-- Side Logo -->
 		<div
 			class="relative hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 		>
@@ -97,5 +97,6 @@
 				<PaylnSvg />
 			</div>
 		</div>
+		<!-- End of Side Logo -->
 	</section>
 </div>
