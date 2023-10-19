@@ -20,8 +20,10 @@
 	}
 </script>
 
-<div class="p-2 sm:p-6 md:p-10">
-	<section class="flex flex-col sm:flex-row justify-center">
+<div class="p-2 mx-auto sm:p-6 md:p-10">
+	<section
+		class="flex flex-col items-center sm:items-stretch sm:w-full sm:flex-row sm:justify-center"
+	>
 		<!-- Top Logo -->
 		<div
 			class="w-full h-[10vh] sm:hidden p-2 max-h-sm max-w-sm bg-[#223d5b] border border-gray-200 rounded-t-lg shadow flex justify-center"
@@ -91,7 +93,7 @@
 
 		<!-- Side Logo -->
 		<div
-			class="relative hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
+			class="hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 		>
 			<div class="pt-[20vh]">
 				<PaylnSvg />

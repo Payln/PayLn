@@ -92,7 +92,7 @@
 </script>
 
 <section class="p-2 sm:p-6 md:p-10">
-	<div class="flex flex-col sm:flex-row justify-center">
+	<div class="flex flex-col items-center sm:items-stretch sm:w-full sm:flex-row sm:justify-center">
 		<!-- Top Logo -->
 		<div
 			class="w-full h-[10vh] sm:hidden p-2 max-h-sm max-w-sm bg-[#223d5b] border border-gray-200 rounded-t-lg shadow flex justify-center"
@@ -250,7 +250,7 @@
 					<button
 						type="submit"
 						class="text-white bg-[#223d5b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
-						>Submit</button
+						><a href="/Dashboard">Submit</a></button
 					>
 					<button
 						type="button"
