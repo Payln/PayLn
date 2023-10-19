@@ -86,7 +86,7 @@
 					>Login to your account</button
 				>
 				<div class="text-sm font-medium text-gray-900ha">
-					Not registered? <a href="Signup" class="text-[#223d5b] hover:underline">Create account</a>
+					Not registered? <a href="signup" class="text-[#223d5b] hover:underline">Create account</a>
 				</div>
 			</form>
 		</div>
