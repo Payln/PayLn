@@ -1,6 +1,21 @@
 <script>
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
 
+	/**
+	 * @param {{ preventDefault: () => void; target: any; }} event
+	 */
+	async function formSubmit(event) {
+		event.preventDefault();
+		const form = event.target;
+		const formData = new FormData(form);
+		const response = await fetch(form.action, {
+			method: form.method,
+			body: formData
+		});
+		const data = await response.json();
+		console.log(data);
+	}
+
 	let pass_Type = 'password';
 
 	const pass_Visibility = () => {
@@ -33,7 +48,7 @@
 		{
 			label: 'Password',
 			type: 'password',
-			name: 'floating_password',
+			name: 'password',
 			id: 'floating_password',
 			placeholder: '',
 			required: true
@@ -68,8 +83,8 @@
 	];
 
 	let Name_field = [
-		{ name: 'floating_first_name', id: 'floating_first_name', label: 'First name' },
-		{ name: 'floating_last_name', id: 'floating_last_name', label: 'Last name' }
+		{ name: 'first_name', id: 'floating_first_name', label: 'First name' },
+		{ name: 'last_name', id: 'floating_last_name', label: 'Last name' }
 	];
 
 	let State_field = [
@@ -95,12 +110,16 @@
 		</div>
 		<!-- End of Top Logo  -->
 		<div
-			class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
+			class="w-full p-4 max-w-sm bg-[#dedede] border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 		>
 			<h3 class="md:text-3xl text-xl capitalize font-medium text-[#223d5b] pb-4">
 				Sign up for PayLn
 			</h3>
-			<form>
+			<form
+				on:submit={formSubmit}
+				action="https://payln-staging.onrender.com/auth/signup"
+				method="POST"
+			>
 				<!--  -->
 				<div class="grid md:grid-cols-2 md:gap-6">
 					{#each Name_field as field}
@@ -211,7 +230,7 @@
 				{#each formField2 as field}
 					<div class="relative z-0 w-full mb-6 group">
 						<input
-							type={pass_Type}
+							type="text"
 							name={field.name}
 							id={field.id}
 							class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -234,7 +253,7 @@
 					<textarea
 						id="about"
 						rows="4"
-						class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+						class="block p-2.5 w-full text-sm text-gray-900 bg-[#DEDEDE] rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500"
 						placeholder="Write about your company..."
 					/>
 				</div>
@@ -242,7 +261,7 @@
 					<button
 						type="submit"
 						class="text-white bg-[#223d5b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center"
-						><a href="dashboard">Submit</a></button
+						>Submit</button
 					>
 					<button
 						type="button"

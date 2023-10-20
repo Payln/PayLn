@@ -3,6 +3,7 @@
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import PaylnSvgc from '$lib/PaylnSVGC.svelte';
 	import { onMount } from 'svelte';
+	import Checkout from '../images/Checkout.png';
 
 	let isLoading = true;
 
@@ -51,8 +52,8 @@
 			description: '(pay international invoice)'
 		},
 		{
-			icon: 'fa-solid fa-comments',
-			title: '24/7 human customer support',
+			icon: 'fa-solid fa-hourglass-half',
+			title: 'Zero down time',
 			description: ''
 		}
 	];
@@ -90,7 +91,7 @@
 </svelte:head>
 
 <!-- Nav Bar -->
-<nav class="bg-white border-gray-200 dark:bg-gray-900">
+<nav class="bg-[#dedede] border-gray-200 dark:bg-gray-900">
 	<div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
 		<a href="login" class="flex items-center w-[4.5rem]">
 			<PaylnSvgc />
@@ -99,7 +100,7 @@
 			<a href="login">
 				<button
 					type="button"
-					class="text-[#223d5b] bg-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-1"
+					class="text-[#223d5b] bg-[#dedede] hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-1"
 				>
 					Log In
 				</button>
@@ -130,7 +131,7 @@
 			id="navbar-cta"
 		>
 			<ul
-				class="flex w-[95%] mx-auto flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 absolute md:relative"
+				class="flex w-[95%] mx-auto flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-[#dedede] dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 absolute md:relative"
 			>
 				{#each ['Learn', 'Pitch', 'About', 'Team'] as item}
 					<li>
@@ -146,7 +147,7 @@
 	</div>
 </nav>
 <!--  -->
-<div class="mx-auto md:w-[75%] w-2/3">
+<div class="mx-auto md:w-[75%] w-[90%]">
 	<h1
 		class="mb-6 mt-4 text-4xl font-medium leading-none tracking-tight text-[#223d5b] md:text-4xl lg:text-4xl dark:text-white"
 	>
@@ -155,11 +156,13 @@
 	<p class="mb-12 text-lg font-normal text-[#00000060] lg:text-xl">
 		Start accepting bitcoin & lightning on your websites with PayLN.
 	</p>
-	<!--  -->
-	<div class="grid grid-cols-2 lg:grid-cols-3 gap-[5rem] text-center mx-4 md:w-1/2 max-w-fit">
+</div>
+<!--  -->
+<div class="grid mx-auto w-[50%] lg:w-screen grid-flow-row lg:grid-flow-col">
+	<div class="grid grid-cols-2 lg:grid-cols-3 gap-[2rem] md:gap-[6rem] text-center mx-auto md:mx-4">
 		{#each blocks as block}
 			<p
-				class="text-xl border-2 bg-white border-gray-200 rounded-lg shadow p-4 w-[10rem] h-contnet"
+				class="text-xl border-2 bg-[#dedede] border-gray-200 rounded-lg shadow p-2 md:p-4 w-[10rem]"
 			>
 				<span class="pr-3 text-[#223d5b]">
 					<i class={block.icon} />
@@ -173,16 +176,13 @@
 				{/if}
 			</p>
 		{/each}
-		<p class="col-span-2 lg:col-span-3 text-xl border-2 bg-white border-gray-200 rounded-lg shadow">
-			<span class="pr-3 text-[#223d5b]">
-				<i class="fa-solid fa-hourglass-half" />
-			</span><br />
-			Zero down time
-		</p>
+	</div>
+	<div class="lg:w-[30vw] w-[50vw] my-10 mx-auto lg:pl-24 lg:my-auto">
+		<img src={Checkout} alt="" />
 	</div>
 </div>
 <!--  -->
-<div class="mt-[30vh] bg-[#223d5b] block w-full px-16 pb-16 text-white border border-gray-200">
+<div class="mt-16 bg-[#223d5b] block w-[75%] mx-auto px-16 pb-16 text-white border border-gray-200">
 	<div class="flex felx-row">
 		<h5 class="mb-2 text-2xl font-bold my-12">E-Commerce</h5>
 	</div>
@@ -234,15 +234,15 @@
 
 <a
 	href="signup"
-	class="bg-[#223d5b] mx-auto block md:w-[80%] w-full p-6 text-white border border-gray-200 rounded-lg shadow text-center"
+	class="bg-[#223d5b] mx-auto block md:w-[80%] w-full p-6 text-white border border-gray-200 md:rounded-lg shadow text-center"
 >
 	<h5 class="mb-2 text-2xl font-bold">
-		Join the future of African Payments and Start Transacting with BTC
+		Join the future of Payments.<br /> Start accepting payments with Bitcoin & Lightning
 	</h5>
 </a>
 
 <!--  -->
-<footer class="bg-white rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
+<footer class="bg-[#dedede] shadow md:shadow-none">
 	<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
 		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
 			>© 2023 <a href="/" class="hover:underline">PayLN</a>. All Rights Reserved.

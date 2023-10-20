@@ -1,5 +1,7 @@
 <script>
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
+	import { onMount } from 'svelte';
+	import PaylnSvgcl from '$lib/PaylnSVGCL.svelte';
 
 	let sideBar = false;
 	let toggleSidebar = () => {
@@ -18,6 +20,17 @@
 			toggleSidebar();
 		}
 	}
+
+	let isLoading = true;
+
+	onMount(() => {
+		isLoading = false;
+	});
+
+	let openNav = false;
+	const toggleNavBar = () => {
+		openNav = !openNav;
+	};
 </script>
 
 <!--  -->
@@ -61,7 +74,7 @@
 					</div>
 					<div
 						class:hidden={!imageOptionSelected}
-						class="hidden z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 absolute right-5 transform translate-x-[1vw] mt-[25vh]"
+						class="hidden z-50 my-4 text-base list-none bg-[#dedede] divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 absolute right-5 transform translate-x-[1vw] mt-[25vh]"
 						id="dropdown-user"
 					>
 						<div class="px-4 py-3" role="none">
@@ -93,10 +106,10 @@
 <aside
 	class:transform-none={sideBar}
 	id="logo-sidebar"
-	class="fixed top-0 left-0 z-40 w-[fit-content] h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-[#223d5b] dark:border-gray-700"
+	class="fixed top-0 left-0 z-40 w-[fit-content] h-screen pt-20 transition-transform -translate-x-full bg-[#dedede] border-r border-gray-200 sm:translate-x-0 dark:bg-[#223d5b] dark:border-gray-700"
 	aria-label="Sidebar"
 >
-	<div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-[#223d5b]">
+	<div class="h-full px-3 pb-4 overflow-y-auto bg-[#dedede] dark:bg-[#223d5b]">
 		<ul class="space-y-2 font-medium">
 			<li>
 				<a
@@ -121,4 +134,10 @@
 </aside>
 <!--  -->
 
-<slot />
+{#if isLoading}
+	<div class="mx-auto mt-[30vh] w-[15rem]">
+		<PaylnSvgcl />
+	</div>
+{:else}
+	<slot />
+{/if}

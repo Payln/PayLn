@@ -19,7 +19,7 @@
 <div class="dark dark:bg-[#223d5b]" />
 
 {#if isLoading}
-	<div class="mx-auto my-[10vh] w-[15rem]">
+	<div class="mx-auto mt-[30vh] w-[15rem]">
 		<PaylnSvgcl />
 	</div>
 {:else}

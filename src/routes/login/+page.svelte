@@ -35,7 +35,7 @@
 			</div>
 			<!-- End of Top Logo  -->
 			<div
-				class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
+				class="w-full p-4 max-w-sm bg-[#dedede] border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 			>
 				<form class="space-y-12" action="#">
 					<h5 class="md:text-3xl text-xl font-medium text-[#223d5b] text-center">Login to PayLn</h5>

@@ -53,7 +53,7 @@
 		<hr class="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
 		<section class="md:flex flex-row md:justify-around">
 			<div
-				class="block mx-auto sm:mx-0 max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+				class="block mx-auto sm:mx-0 max-w-md p-6 bg-[#dedede] border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
 			>
 				<h5
 					class="mb-2 text-2xl font-bold tracking-tightdark:text-white text-[#223d5b] dark:text-gray-400"
@@ -68,7 +68,7 @@
 				{/each}
 			</div>
 			<div
-				class="block mx-auto sm:mx-0 max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+				class="block mx-auto sm:mx-0 max-w-md p-6 bg-[#dedede] border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
 			>
 				<h5
 					class="mb-2 text-2xl font-bold tracking-tightdark:text-white text-[#223d5b] dark:text-gray-400"
@@ -90,7 +90,7 @@
 	<section class="">
 		{#each walletAction as item}
 			<div
-				class="flex flex-row mx-auto sm:mx-0 justify-between mt-12 max-w-lg sm:max-w-full p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+				class="flex flex-row mx-auto sm:mx-0 justify-between mt-12 max-w-lg sm:max-w-full p-6 bg-[#dedede] border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
 			>
 				<p class="mb-3 mr-3 font-normal text-gray-700 dark:text-gray-400 capitalize">
 					{item.label}
@@ -126,7 +126,7 @@
 			<tbody>
 				{#each transaction as trans}
 					<tr
-						class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+						class="bg-[#dedede] border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
 					>
 						<td class="px-6 py-4">{trans.time}</td>
 						<td class="px-6 py-4">{trans.amount}</td>
@@ -143,7 +143,7 @@
 
 <!--  -->
 <!--  -->
-<footer class="bg-white rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
+<footer class="bg-[#dedede] rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
 	<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
 		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
 			>© 2023 <a href="/" class="hover:underline">PayLN</a>. All Rights Reserved.

@@ -29,7 +29,6 @@
 			class="focus-within:ring-blue-500 rounded-md focus-within:border-blue-500 box-border h-12 w-12 p-2 border-2 border-gray-300"
 		>
 			<textarea
-				id="number"
 				rows="1"
 				on:input={validateInput}
 				class="block w-full h-full text-center text-lg font-medium text-gray-900 bg-transparent resize-none outline-none"
