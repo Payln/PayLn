@@ -56,6 +56,33 @@
 			description: ''
 		}
 	];
+
+	const works = [
+		{
+			icon: 'fa-solid fa-1',
+			text: 'Sign up for Payln and get an API key',
+			fly: { y: 200, duration: 3000 },
+			fade: true
+		},
+		{
+			icon: 'fa-solid fa-2',
+			text: 'Add Payln front end widget to your <script/> tag on your website',
+			fly: { y: 200, duration: 4000 },
+			fade: true
+		},
+		{
+			icon: 'fa-solid fa-3',
+			text: 'When the customer checkout, we take over. The customer is given the option to pay with Lightning or BTC',
+			fly: { y: 200, duration: 5000 },
+			fade: true
+		},
+		{
+			icon: 'fa-solid fa-4',
+			text: 'Customer pays and we verify the payment instantly',
+			fly: { y: 200, duration: 6000 },
+			fade: true
+		}
+	];
 </script>
 
 <svelte:head>
@@ -69,16 +96,22 @@
 			<PaylnSvgc />
 		</a>
 		<div class="flex md:order-2">
-			<button
-				type="button"
-				class="text-[#223d5b] bg-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-1"
-				>Log In</button
-			>
-			<button
-				type="button"
-				class="text-white bg-[#223d5b] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0"
-				>Sign Up</button
-			>
+			<a href="login">
+				<button
+					type="button"
+					class="text-[#223d5b] bg-white hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-1"
+				>
+					Log In
+				</button>
+			</a>
+			<a href="signup">
+				<button
+					type="button"
+					class="text-white bg-[#223d5b] hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0"
+				>
+					Sign Up
+				</button>
+			</a>
 			<button
 				data-collapse-toggle="navbar-cta"
 				on:click={toggleNavBar}
@@ -103,7 +136,7 @@
 					<li>
 						<a
 							href="#"
-							class="block py-2 pl-3 pr-4 text-black md:p-0 hover:bg-slate-400"
+							class="block py-2 pl-3 pr-4 text-black md:p-0 hover:bg-slate-400 md:hover:bg-transparent"
 							aria-current="page">{item}</a
 						>
 					</li>
@@ -125,12 +158,15 @@
 	<!--  -->
 	<div class="grid grid-cols-2 lg:grid-cols-3 gap-[5rem] text-center mx-4 md:w-1/2 max-w-fit">
 		{#each blocks as block}
-			<p class="text-xl border-2 bg-white border-gray-200 rounded-lg shadow p-2">
+			<p
+				class="text-xl border-2 bg-white border-gray-200 rounded-lg shadow p-4 w-[10rem] h-contnet"
+			>
 				<span class="pr-3 text-[#223d5b]">
 					<i class={block.icon} />
 				</span><br />
 				{block.title}
 				{#if block.description}
+					<br />
 					<span class="mb-6 text-sm font-normal text-[#00000060] lg:text-md">
 						{block.description}
 					</span>
@@ -144,33 +180,81 @@
 			Zero down time
 		</p>
 	</div>
+</div>
+<!--  -->
+<div class="my-[30vh] bg-[#223d5b] block w-full px-16 pb-16 text-white border border-gray-200">
+	<div class="flex felx-row">
+		<h5 class="mb-2 text-2xl font-bold my-12">E-Commerce</h5>
+	</div>
 	<!--  -->
+	<h5 class="mb-2 text-5xl font-bold my-12">The best way to accept payments</h5>
+	<p class="text-gray-400 my-6">
+		Accept payments with BTC & Lightning from anywhere in the world, with PayLN Commerce.
+	</p>
+	<!--  -->
+	<div class="pt-[4rem] grid grid-cols-2 gap-6">
+		<p><i class="fa-solid fa-clock pr-2" />Get fully set-up in minutes, not days</p>
+		<p>
+			<i class="fa-solid fa-shield-halved pr-2" />Eliminate fraud — No chargebacks or Identity theft
+		</p>
+		<p><i class="fa-solid fa-globe pr-2" />Tap into a global customer base</p>
+		<p><i class="fa-brands fa-bitcoin pr-2" />No hidden fees ever</p>
+	</div>
+</div>
+<!--  -->
+<div class="mx-auto md:w-[75%] w-2/3 pt-[30vh] font-mono">
 	<IntersectionObserver {element} bind:intersecting>
-		<div class="pt-[100vh]">
-			<h5 class="mb-2 text-3xl font-bold tracking-tight underline underline-offset-8">
-				How it works
-			</h5>
-			<div bind:this={element}>
+		<div bind:this={element}>
+			{#if intersecting}
+				<h5
+					in:fly={{ y: 200, duration: 2000 }}
+					out:fade
+					class="text-[#223d5b] mb-2 text-3xl font-bold tracking-tight underline underline-offset-8"
+				>
+					How it works
+				</h5>
+			{/if}
+
+			{#each works as work}
 				{#if intersecting}
-					<div in:fly={{ y: 200, duration: 3000 }} out:fade>
-						<p>
+					<div in:fly={work.fly} out:fade>
+						<p class="my-6">
 							<span class="pr-3 text-[#223d5b]">
-								<i class="fa-solid fa-1" />
+								<i class={work.icon} />
 							</span>
-							Sign up for Payln and get an api key
-						</p>
-					</div>
-					<div in:fly={{ y: 200, duration: 4000 }} out:fade>
-						<p>
-							<span class="pr-3 text-[#223d5b]">
-								<i class="fa-solid fa-2" />
-							</span>
-							Add Payln front end widget to your script tag on your website
+							{work.text}
 						</p>
 					</div>
 				{/if}
-			</div>
-		</div></IntersectionObserver
-	>
-	<div class="p-[30vh]" />
+			{/each}
+		</div>
+	</IntersectionObserver>
 </div>
+<div class="p-[10vh]" />
+
+<a
+	href="signup"
+	class="bg-[#223d5b] mx-auto block md:w-[80%] w-full p-6 text-white border border-gray-200 rounded-lg shadow text-center"
+>
+	<h5 class="mb-2 text-2xl font-bold">
+		Join the future of African Payments and Start Transacting with BTC
+	</h5>
+</a>
+
+<!--  -->
+<footer class="bg-white rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
+	<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+			>© 2023 <a href="/" class="hover:underline">PayLN</a>. All Rights Reserved.
+		</span>
+		<ul
+			class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+		>
+			{#each ['About', 'Privacy', 'Policy', 'Licensing', 'Contact'] as item}
+				<li>
+					<a href="#" class="mr-4 hover:underline md:mr-6">{item}</a>
+				</li>
+			{/each}
+		</ul>
+	</div>
+</footer>
