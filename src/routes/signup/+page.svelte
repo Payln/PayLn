@@ -110,7 +110,7 @@
 		</div>
 		<!-- End of Top Logo  -->
 		<div
-			class="w-full p-4 max-w-sm bg-[#dedede] border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
+			class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 		>
 			<h3 class="md:text-3xl text-xl capitalize font-medium text-[#223d5b] pb-4">
 				Sign up for PayLn
@@ -253,7 +253,7 @@
 					<textarea
 						id="about"
 						rows="4"
-						class="block p-2.5 w-full text-sm text-gray-900 bg-[#DEDEDE] rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500"
+						class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-200 focus:ring-blue-500 focus:border-blue-500"
 						placeholder="Write about your company..."
 					/>
 				</div>
