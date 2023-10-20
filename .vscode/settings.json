@@ -1,3 +1,4 @@
 {
-	"cSpell.words": ["nocheck", "Payln", "Sats"]
+	"cSpell.words": ["inview", "nocheck", "Payln", "Sats"],
+	"githubPullRequests.ignoredPullRequestBranches": ["main"]
 }

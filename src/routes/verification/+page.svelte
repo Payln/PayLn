@@ -47,7 +47,5 @@
 
 <p class="mt-6 mx-6 text-center text-xl font-normal text-gray-900 lg:text-xl sm:px-16 xl:px-48">
 	Didn't receive the code? Check your spam folder or click
-</p>
-<p class=" text-yellow-600 mx-6 text-center text-xl font-normal lg:text-xl sm:px-16 xl:px-48">
-	Resend Code.
+	<a href="#" class=" text-yellow-600"> Resend Code. </a>
 </p>
