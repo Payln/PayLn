@@ -182,7 +182,7 @@
 	</div>
 </div>
 <!--  -->
-<div class="my-[30vh] bg-[#223d5b] block w-full px-16 pb-16 text-white border border-gray-200">
+<div class="mt-[30vh] bg-[#223d5b] block w-full px-16 pb-16 text-white border border-gray-200">
 	<div class="flex felx-row">
 		<h5 class="mb-2 text-2xl font-bold my-12">E-Commerce</h5>
 	</div>
@@ -202,7 +202,7 @@
 	</div>
 </div>
 <!--  -->
-<div class="mx-auto md:w-[75%] w-2/3 pt-[30vh] font-mono">
+<div class="mx-auto md:w-[75%] w-2/3 pt-24 font-mono">
 	<IntersectionObserver {element} bind:intersecting>
 		<div bind:this={element}>
 			{#if intersecting}
