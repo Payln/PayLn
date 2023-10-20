@@ -159,7 +159,7 @@
 </div>
 <!--  -->
 <div class="grid mx-auto w-[50%] lg:w-screen grid-flow-row lg:grid-flow-col">
-	<div class="grid grid-cols-2 lg:grid-cols-3 gap-[2rem] md:gap-[6rem] text-center mx-auto md:mx-4">
+	<div class="grid grid-cols-2 lg:grid-cols-3 gap-[2rem] md:gap-[3rem] text-center mx-auto md:mx-4">
 		{#each blocks as block}
 			<p
 				class="text-xl border-2 bg-[#dedede] border-gray-200 rounded-lg shadow p-2 md:p-4 w-[10rem]"
@@ -177,7 +177,7 @@
 			</p>
 		{/each}
 	</div>
-	<div class="lg:w-[30vw] w-[50vw] my-10 mx-auto lg:pl-24 lg:my-auto">
+	<div class="lg:w-[40vw] w-[50vw] my-10 mx-auto lg:pl-24 lg:my-auto">
 		<img src={Checkout} alt="" />
 	</div>
 </div>
