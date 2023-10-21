@@ -68,19 +68,19 @@
 		{
 			icon: 'fa-solid fa-2',
 			text: 'Add Payln front end widget to your <script/> tag on your website',
-			fly: { y: 200, duration: 4000 },
+			fly: { y: 200, duration: 3500 },
 			fade: true
 		},
 		{
 			icon: 'fa-solid fa-3',
 			text: 'When the customer checkout, we take over. The customer is given the option to pay with Lightning or BTC',
-			fly: { y: 200, duration: 5000 },
+			fly: { y: 200, duration: 4000 },
 			fade: true
 		},
 		{
 			icon: 'fa-solid fa-4',
 			text: 'Customer pays and we verify the payment instantly',
-			fly: { y: 200, duration: 6000 },
+			fly: { y: 200, duration: 4500 },
 			fade: true
 		}
 	];
