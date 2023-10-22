@@ -69,11 +69,14 @@
 				}
 				if (result !== null && result.status == 'success') {
 					alert('Successful!');
+					data.message = "You've Successfully Logged in";
 					pageLoading.set(false);
 				}
-				alert('Unsuccessful!');
-				pageLoading.set(false);
-				console.log('result = ', result);
+				if (result !== null && result.status == 'error') {
+					alert('Unsuccessful!');
+					data.message = 'You were Unsuccessful in Logging in';
+					pageLoading.set(false);
+				}
 				break;
 		}
 	}
