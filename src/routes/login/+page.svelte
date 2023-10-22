@@ -3,11 +3,7 @@
 
 	let pass_Type = 'password';
 	const pass_Visibility = () => {
-		if (pass_Type == 'password') {
-			pass_Type = 'text';
-		} else {
-			pass_Type = 'password';
-		}
+		pass_Type = pass_Type === 'password' ? 'text' : 'password';
 	};
 
 	/**

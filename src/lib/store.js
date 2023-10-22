@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 
-export const passwordMatch = writable('');
-export const emailCheck = writable('');
-export const submitting = writable(false);
+export const signupResult = writable('');
+export const otp = writable('');
+export const pageLoading = writable(true);
+export const error = writable('');

@@ -1,28 +1,19 @@
 <script>
+	// @ts-nocheck
+
 	import { fade, fly } from 'svelte/transition';
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import PaylnSvgc from '$lib/PaylnSVGC.svelte';
 	import { onMount } from 'svelte';
 	import Checkout from '../images/Checkout.png';
 
-	let isLoading = true;
-
-	onMount(() => {
-		isLoading = false;
-	});
-
 	let openNav = false;
 	const toggleNavBar = () => {
 		openNav = !openNav;
 	};
 
-	/**
-	 * @type {HTMLDivElement}
-	 */
 	let element;
-	/**
-	 * @type {any}
-	 */
+
 	let intersecting;
 
 	const blocks = [
@@ -85,10 +76,6 @@
 		}
 	];
 </script>
-
-<svelte:head>
-	<title>PayLn</title>
-</svelte:head>
 
 <div class="max-w-[1024px] mx-auto">
 	<!-- Nav Bar -->

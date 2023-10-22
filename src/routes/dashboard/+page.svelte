@@ -1,4 +1,5 @@
 <script>
+	import { transaction } from './transaction.js';
 	const walletAction = [
 		{ label: 'Withdraw Bitcoin', action: 'Withdraw', favicon: 'fa-brands fa-bitcoin' },
 		{ label: 'Pay a lightning invoice', action: 'Pay', favicon: 'fa-solid fa-file-invoice-dollar' },
@@ -6,43 +7,6 @@
 			label: 'Convert Bitcoin and Lightning balance to Local Currency',
 			action: 'Convert',
 			favicon: 'fa-solid fa-money-bill-transfer'
-		}
-	];
-	const transaction = [
-		{
-			time: '2023-10-19 14:30:00',
-			amount: '0.002345',
-			customerID: '7f8a2',
-			status: 'Waiting',
-			chain: 'BTC'
-		},
-		{
-			time: '2023-12-15 18:45:20',
-			amount: '0.0015',
-			customerID: '3b9c1',
-			status: 'Waiting',
-			chain: 'BTC'
-		},
-		{
-			time: '2023-10-27 07:30:15',
-			amount: '0.00194',
-			customerID: '5e2d8',
-			status: 'Paid',
-			chain: 'LN'
-		},
-		{
-			time: '2023-11-10 14:20:45',
-			amount: '0.0121',
-			customerID: '1a6f9',
-			status: 'Paid',
-			chain: 'LN'
-		},
-		{
-			time: '2023-12-01 22:10:05',
-			amount: '0.0072',
-			customerID: '9d4b7',
-			status: 'Paid',
-			chain: 'LN'
 		}
 	];
 </script>
@@ -110,9 +74,7 @@
 	<!--Transaction History  -->
 	<div class="mt-[5vh]" />
 
-	<h3 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-		Transaction History
-	</h3>
+	<h3 class="mb-2 mx-6 text-2xl font-bold tracking-tight text-gray-900">Transaction History</h3>
 
 	<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
 		<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -143,7 +105,7 @@
 
 <!--  -->
 <!--  -->
-<footer class="bg-white rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
+<footer class="bg-white md:ml-40 rounded-lg shadow md:shadow-none m-4 dark:bg-gray-800">
 	<div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
 		<span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
 			>© 2023 <a href="/" class="hover:underline">PayLN</a>. All Rights Reserved.

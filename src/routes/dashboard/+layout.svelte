@@ -2,6 +2,7 @@
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
 	import { onMount } from 'svelte';
 	import PaylnSvgcl from '$lib/PaylnSVGCL.svelte';
+	import { pageLoading } from '$lib/store.js';
 
 	let sideBar = false;
 	let toggleSidebar = () => {
@@ -12,19 +13,9 @@
 	const toggleImageOption = () => {
 		imageOptionSelected = !imageOptionSelected;
 	};
-	/**
-	 * @param {{ key: string; }} event
-	 */
-	function handle_keydown(event) {
-		if (event.key === 'Enter') {
-			toggleSidebar();
-		}
-	}
-
-	let isLoading = true;
 
 	onMount(() => {
-		isLoading = false;
+		pageLoading.set(false);
 	});
 
 	let openNav = false;
@@ -134,10 +125,4 @@
 </aside>
 <!--  -->
 
-{#if isLoading}
-	<div class="mx-auto mt-[30vh] w-[15rem]">
-		<PaylnSvgcl />
-	</div>
-{:else}
-	<slot />
-{/if}
+<slot />
