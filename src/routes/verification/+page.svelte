@@ -19,7 +19,7 @@
 
 	onMount(() => {
 		const storedResult = localStorage.getItem('signupResult');
-
+		pageLoading.set(false);
 		if (storedResult !== null) {
 			const result = JSON.parse(storedResult);
 			signupResult.set(result);
