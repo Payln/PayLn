@@ -24,11 +24,13 @@
 	let email_check = '';
 	let data;
 
+	// function to change the visibility of the password
 	let pass_Type = 'password';
 	const pass_Visibility = () => {
 		pass_Type = pass_Type === 'password' ? 'text' : 'password';
 	};
 
+	// keydown for func to change the visibility of the password, 11ty needed.
 	function KeyDown(event) {
 		if (event.key === 'Enter') {
 			pass_Visibility();
@@ -98,10 +100,7 @@
 		name: password_field.name,
 		id: password_field.id,
 		placeholder: password_field.placeholder,
-		style: password_field.style,
-		on: {
-			keydown: KeyDown
-		}
+		style: password_field.style
 	};
 </script>
 
@@ -115,7 +114,9 @@
 				class="w-full h-[10vh] sm:hidden p-2 max-h-sm max-w-sm bg-[#223d5b] border border-gray-200 rounded-t-lg shadow flex justify-center"
 			>
 				<div class="w-[6rem] mt-[1rem]">
-					<PaylnSvg />
+					<a href="/">
+						<PaylnSvg />
+					</a>
 				</div>
 			</div>
 			<!-- End of Top Logo  -->
@@ -124,7 +125,7 @@
 				class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 			>
 				<form class="space-y-12" action="#">
-					<h5 class="md:text-3xl text-xl font-medium text-[#223d5b] text-center">Login to PayLn</h5>
+					<h5 class="md:text-3xl text-xl font-medium text-[#223d5b] text-center">Login to PayLN</h5>
 					<div>
 						<label for="email" class="block mb-2 text-sm font-medium text-gray-900"
 							>Your email</label
@@ -164,13 +165,13 @@
 
 						<!-- End Password Visibility Icon -->
 						<Input
-							type={pass_Type}
-							name={password_field.name}
-							id={password_field.id}
-							placeholder={password_field.placeholder}
+							type={passwordInputProps.type}
+							name={passwordInputProps.name}
+							id={passwordInputProps.id}
+							placeholder={passwordInputProps.placeholder}
 							required
 							bind:value={password}
-							style={password_field.style}
+							style={passwordInputProps.style}
 						/>
 						<p class="mt-2 ml-2 text-xs text-red-600">
 							{password_Match}
@@ -178,7 +179,7 @@
 					</div>
 					<!-- End of Password -->
 					<!-- Buttons -->
-					<div class="flex items-start">
+					<div class="flex mx-auto items-start">
 						<a href="#" class="mx-auto text-sm text-[#223d5b] hover:underline">Lost Password?</a>
 					</div>
 					<button
@@ -187,7 +188,7 @@
 						class="w-full text-white bg-[#223d5b] hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
 						>Login to your account</button
 					>
-					<div class="text-sm font-medium text-gray-900ha">
+					<div class="text-sm mx-auto w-fit font-medium text-gray-900">
 						Not registered? <a href="signup" class="text-[#223d5b] hover:underline"
 							>Create account</a
 						>
@@ -203,7 +204,9 @@
 				class="hidden sm:block w-full p-4 max-w-md bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 			>
 				<div class="pt-[20vh]">
-					<PaylnSvg />
+					<a href="/">
+						<PaylnSvg />
+					</a>
 				</div>
 			</div>
 			<!-- End of Side Logo -->

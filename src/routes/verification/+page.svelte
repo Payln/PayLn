@@ -22,6 +22,7 @@
 		pageLoading.set(false);
 		if (storedResult !== null) {
 			const result = JSON.parse(storedResult);
+			console.log('result = ', result);
 			signupResult.set(result);
 			localStorage.removeItem('signupResult');
 		}

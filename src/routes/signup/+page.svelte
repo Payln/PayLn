@@ -1,12 +1,9 @@
 <script>
-	// @ts-nocheck
-	import PaylnSvgcl from '$lib/PaylnSVGCL.svelte';
+	//@ts-nocheck
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
 	import Input from '$lib/Input.svelte';
 	import { pageLoading } from '$lib/store';
 
-	let password_Match = '';
-	let email_check = '';
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 	let formData = {
@@ -14,23 +11,25 @@
 		last_name: '',
 		email: '',
 		password: '',
-		confirm_password: ''
+		confirmPassword: ''
 	};
 
-	//
+	let passwordMatch = '';
+	let emailCheck = '';
+
 	async function formSubmit() {
 		switch (true) {
-			case emailRegex.test(formData.email) == false:
+			case emailRegex.test(formData.email) === false:
 				console.log('Invalid email');
-				email_check = 'Invalid email';
+				emailCheck = 'Invalid email';
 				break;
-			case formData.password !== formData.confirm_password || formData.password == '':
+			case formData.password !== formData.confirmPassword || formData.password === '':
 				console.log('Password and confirm password do not match');
-				password_Match = 'Password and confirm password do not match';
+				passwordMatch = 'Password and confirm password do not match';
 				break;
 			case formData.password.length < 8:
 				console.log('Password is too short');
-				password_Match = 'Password is too short';
+				passwordMatch = 'Password is too short';
 				break;
 			default:
 				pageLoading.set(true);
@@ -44,67 +43,68 @@
 				const result = await response.json();
 				console.log('result = ', result);
 				localStorage.setItem('signupResult', JSON.stringify(result.data));
-				console.log(result);
-				if (result !== null && result.status != 'error') {
+				if (result !== null && result.status !== 'error') {
 					window.location.href = 'verification';
+				} else if (result.status === 'error') {
+					window.location.href = 'login';
 				}
 				break;
 		}
 	}
-	//
 
-	let pass_Type = 'password';
+	let passType = 'password';
 
-	const pass_Visibility = () => {
-		pass_Type = pass_Type === 'password' ? 'text' : 'password';
+	const passVisibility = () => {
+		passType = passType === 'password' ? 'text' : 'password';
 	};
 
-	function KeyDown(event) {
+	function keyDown(event) {
 		if (event.key === 'Enter') {
-			pass_Visibility();
+			passVisibility();
 		}
 	}
 
-	let form_css =
+	const formCss =
 		'block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer';
-	const password_field = [
+
+	const passwordField = [
 		{
 			label: 'Password',
 			type: 'password',
 			name: 'password',
 			id: 'password',
-			style: form_css
+			style: formCss
 		},
 		{
 			label: 'Confirm password',
 			type: 'password',
-			name: 'confirm_password',
+			name: 'confirmPassword',
 			id: 'floating_confirm_password',
-			style: form_css
+			style: formCss
 		}
 	];
 
-	let name_field = [
+	const nameField = [
 		{
 			name: 'first_name',
 			id: 'floating_first_name',
 			label: 'First name',
 			type: 'text',
-			style: form_css
+			style: formCss
 		},
 		{
 			name: 'last_name',
 			id: 'floating_last_name',
 			label: 'Last name',
 			type: 'text',
-			style: form_css
+			style: formCss
 		},
 		{
 			name: 'email',
 			id: 'floating_email',
 			label: 'Email address',
 			type: 'email',
-			style: form_css
+			style: formCss
 		}
 	];
 </script>
@@ -116,7 +116,9 @@
 			class="w-full h-[10vh] sm:hidden p-2 max-h-sm max-w-sm bg-[#223d5b] border border-gray-200 rounded-t-lg shadow flex justify-center"
 		>
 			<div class="w-[6rem] mt-[1rem]">
-				<PaylnSvg />
+				<a href="/">
+					<PaylnSvg />
+				</a>
 			</div>
 		</div>
 		<!-- End of Top Logo  -->
@@ -125,11 +127,11 @@
 			class="w-full p-4 max-w-sm bg-white border border-gray-200 border-r-transparent rounded-b-lg sm:rounded-l-lg shadow sm:p-6 md:p-8"
 		>
 			<h3 class="md:text-3xl text-xl capitalize font-medium text-[#223d5b] pb-4">
-				Sign up for PayLn
+				Sign up for PayLN
 			</h3>
-			<form preventDefault>
+			<form on:submit|preventDefault={formSubmit}>
 				<!-- Names and Email -->
-				{#each name_field as field}
+				{#each nameField as field}
 					<div class="relative z-0 w-full mb-3 group">
 						<Input
 							type={field.type}
@@ -143,19 +145,18 @@
 						<label
 							for={field.id}
 							class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-							>{field.label}</label
 						>
+							{field.label}
+						</label>
 					</div>
 				{/each}
 				<!-- End of Names and Email -->
-				<p class="mb-3 text-xs text-red-600">
-					{email_check}
-				</p>
+				<p class="mb-3 text-xs text-red-600">{emailCheck}</p>
 				<!-- Password -->
-				{#each password_field as field}
+				{#each passwordField as field}
 					<div class="relative z-0 w-full mb-4 group">
 						<Input
-							type={pass_Type}
+							type={passType}
 							name={field.name}
 							id={field.id}
 							placeholder=""
@@ -166,12 +167,12 @@
 						<!-- Password Visibility Icon -->
 						<span class="absolute top-1 mt-3 right-0 flex items-center px-2 cursor-pointer">
 							<i
-								on:click={pass_Visibility}
-								on:keydown={KeyDown}
-								class:fa-eye-slash={pass_Type == 'text'}
-								class:fa-eye={pass_Type !== 'text'}
+								on:click={passVisibility}
+								on:keydown={keyDown}
+								class:fa-eye-slash={passType === 'text'}
+								class:fa-eye={passType !== 'text'}
 								class="fas"
-								aria-label={pass_Type == 'text' ? 'Hide password' : 'Show password'}
+								aria-label={passType === 'text' ? 'Hide password' : 'Show password'}
 								role="button"
 								tabindex="0"
 							/>
@@ -184,7 +185,7 @@
 							{field.label}
 						</label>
 						<p id="standard_error_help" class="mt-2 text-xs text-red-600">
-							{password_Match}
+							{passwordMatch}
 						</p>
 					</div>
 				{/each}
@@ -212,9 +213,11 @@
 			class="hidden sm:block w-full p-4 max-w-sm bg-[#223d5b] border border-gray-200 border-l-transparent rounded-r-lg shadow sm:p-6 md:p-8"
 		>
 			<div
-				class="flex align-middle justify-center items-center content-center mx-auto text-center w-[10rem] h-full"
+				class="flex align-middle justify-center items-center content-center mx-auto text-center w-[15rem] h-full"
 			>
-				<PaylnSvg />
+				<a href="/">
+					<PaylnSvg />
+				</a>
 			</div>
 		</div>
 		<!-- End of Side Logo -->
