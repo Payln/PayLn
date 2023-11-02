@@ -4,9 +4,26 @@
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
 	import { signupResult, pageLoading } from '$lib/store';
 
-	let email;
-	let password;
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+	const form_css =
+		'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5';
+
+	const password_field = {
+		label: 'Password',
+		type: 'password',
+		name: 'password',
+		id: 'password',
+		placeholder: '••••••••',
+		style: form_css
+	};
+
+	let email = '';
+	let password = '';
+	let password_Match = '';
+	let email_check = '';
 	let data;
+
 	let pass_Type = 'password';
 	const pass_Visibility = () => {
 		pass_Type = pass_Type === 'password' ? 'text' : 'password';
@@ -18,69 +35,74 @@
 		}
 	}
 
-	let form_css =
-		'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5';
-	const password_field = {
-		label: 'Password',
-		type: 'password',
-		name: 'password',
-		id: 'password',
-		placeholder: '••••••••',
-		style: form_css
-	};
-
-	let password_Match = '';
-	let email_check = '';
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 	signupResult.subscribe((value) => {
 		data = value;
 	});
 
-	//
 	async function formSubmit() {
-		switch (true) {
-			case emailRegex.test(email) == false:
-				console.log('Invalid email');
-				email_check = 'Invalid email';
-				break;
-			case password.length < 8:
-				console.log('Password is too short');
-				password_Match = 'Password is too short';
-				break;
-			default:
-				pageLoading.set(true);
-				const response = await fetch('https://payln-staging.onrender.com/auth/login', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						email: email,
-						password: password
-					})
-				});
-				const result = await response.json();
-				signupResult.set(result);
-				localStorage.setItem('signupResult', JSON.stringify(result.data));
-				console.log(result);
-				if (result !== null && result.status == 'info') {
-					window.location.href = 'verification';
-				}
-				if (result !== null && result.status == 'success') {
-					alert('Successful!');
-					data.message = "You've Successfully Logged in";
-					pageLoading.set(false);
-				}
-				if (result !== null && result.status == 'error') {
-					alert('Unsuccessful!');
-					data.message = 'You were Unsuccessful in Logging in';
-					pageLoading.set(false);
-				}
-				break;
+		if (emailRegex.test(email) === false) {
+			console.log('Invalid email');
+			email_check = 'Invalid email';
+			return;
+		}
+
+		if (password.length < 8) {
+			console.log('Password is too short');
+			password_Match = 'Password is too short';
+			return;
+		}
+
+		pageLoading.set(true);
+
+		try {
+			const response = await fetch('https://payln-staging.onrender.com/auth/login', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					email,
+					password
+				})
+			});
+
+			const result = await response.json();
+
+			signupResult.set(result);
+			localStorage.setItem('signupResult', JSON.stringify(result.data));
+			console.log(result);
+
+			if (result !== null && result.status === 'info') {
+				window.location.href = 'verification';
+			}
+
+			if (result !== null && result.status === 'success') {
+				alert('Successful!');
+				data.message = "You've Successfully Logged in";
+			}
+
+			if (result !== null && result.status === 'error') {
+				alert('Unsuccessful!');
+				data.message = 'You were Unsuccessful in Logging in';
+			}
+		} catch (error) {
+			console.error(error);
+		} finally {
+			pageLoading.set(false);
 		}
 	}
-	//
+
+	const passwordInputProps = {
+		label: password_field.label,
+		type: pass_Type,
+		name: password_field.name,
+		id: password_field.id,
+		placeholder: password_field.placeholder,
+		style: password_field.style,
+		on: {
+			keydown: KeyDown
+		}
+	};
 </script>
 
 <div class="pt-10">
