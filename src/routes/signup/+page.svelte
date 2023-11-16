@@ -3,6 +3,8 @@
 	import PaylnSvg from '$lib/PaylnSVG.svelte';
 	import Input from '$lib/Input.svelte';
 	import { pageLoading } from '$lib/store';
+	import { goto } from '$app/navigation';
+	import { signupResult } from '$lib/store';
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -32,21 +34,32 @@
 				passwordMatch = 'Password is too short';
 				break;
 			default:
-				pageLoading.set(true);
-				const response = await fetch('https://payln-staging.onrender.com/auth/signup', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(formData)
-				});
-				const result = await response.json();
-				console.log('result = ', result);
-				localStorage.setItem('signupResult', JSON.stringify(result.data));
-				if (result !== null && result.status !== 'error') {
-					window.location.href = 'verification';
-				} else if (result.status === 'error') {
-					window.location.href = 'login';
+				try {
+					pageLoading.set(true);
+					const response = await fetch('https://payln-staging.onrender.com/auth/signup', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify(formData)
+					});
+					const result = await response.json();
+					console.log('result = ', result);
+					signupResult.set(result.data);
+					if (result !== null && result.status !== 'error') {
+						goto('verification');
+						setTimeout(() => {
+							pageLoading.set(false);
+						}, 1000);
+					} else if (result.status === 'error') {
+						goto('login');
+					}
+				} catch (error) {
+					// Handle the error here
+					console.error('An error occurred:', error);
+					// Additional error handling logic can be added here
+				} finally {
+					// Any cleanup code can be added here
 				}
 				break;
 		}
