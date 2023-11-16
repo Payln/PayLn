@@ -6,7 +6,7 @@
 	import { goto } from '$app/navigation';
 	import { signupResult } from '$lib/store';
 
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
 	let formData = {
 		first_name: '',
@@ -34,33 +34,32 @@
 				passwordMatch = 'Password is too short';
 				break;
 			default:
-				try {
-					pageLoading.set(true);
-					const response = await fetch('https://payln-staging.onrender.com/auth/signup', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json'
-						},
-						body: JSON.stringify(formData)
-					});
-					const result = await response.json();
-					console.log('result = ', result);
-					signupResult.set(result.data);
-					if (result !== null && result.status !== 'error') {
-						goto('verification');
-						setTimeout(() => {
-							pageLoading.set(false);
-						}, 1000);
-					} else if (result.status === 'error') {
-						goto('login');
-					}
-				} catch (error) {
-					// Handle the error here
-					console.error('An error occurred:', error);
-					// Additional error handling logic can be added here
-				} finally {
-					// Any cleanup code can be added here
+				pageLoading.set(true);
+				const response = await fetch('https://payln-staging.onrender.com/auth/signup', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(formData)
+				});
+				const result = await response.json();
+				console.log('result = ', result);
+				signupResult.set(result.data);
+				if (result.errors) {
+					pageLoading.set(false);
+					signupResult.set(result.errors);
+				} else if (result !== null && result.status !== 'error') {
+					goto('verification');
+					setTimeout(() => {
+						pageLoading.set(false);
+					}, 1000);
+				} else if (result.status === 'error') {
+					goto('login');
+					setTimeout(() => {
+						pageLoading.set(false);
+					}, 1000);
 				}
+
 				break;
 		}
 	}

@@ -12,15 +12,10 @@
 	$: an_error = $errors;
 
 	onMount(() => {
-		console.log('details = ', details);
-		console.log('user = ', details.result);
 		console.log('error = ', an_error);
 		if (an_error === 'Incorrect Input') {
 			error_alert = true;
 		}
-	});
-	afterUpdate(() => {
-		console.log('error_alert = ', error_alert);
 	});
 
 	function validateInput(event) {
