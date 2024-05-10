@@ -46,4 +46,4 @@ To contribute to the development of PayLN Frontend, ensure you have the followin
 
 ## Live Project
 
-The live version of the PayLN Frontend is available at: [https://payment-paypal.vercel.app/](https://payment-paypal.vercel.app/)
+The live version of the PayLN Frontend is available at: [https://payln.vercel.app/](https://payln.vercel.app/)
